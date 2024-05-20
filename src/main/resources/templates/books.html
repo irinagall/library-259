@@ -17,15 +17,11 @@
     <tbody>
     <tr th:each="book : ${books}">
         <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
         <td>
-            <table>
-                <tbody>
-                <tr th:each="book : ${books}">
-                    <td th:text="${book.title}">Book Title</td>
-                </tr>
-                </tbody>
-            </table>
+            <p th:text="${book.author.fullName}"></p>
         </td>
+
     </tr>
     </tbody>
 
