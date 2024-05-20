@@ -1,13 +1,47 @@
+/* General Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Add this line to create rounded corners for the table */
+    overflow: hidden; /* Add this line to prevent the rounded corners from being cut off */
 }
-th, td {
-    border: 10px mediumvioletred solid;
-    padding: 8px;
-    text-align: left;
-}
+
+/* Table Header */
 th {
-    /*RRGGBB 0-9 A-F*/
-    background-color: aquamarine;
+    background-color: #333;
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Table Rows */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e6e6e6;
+}
+
+/* Table Cells */
+td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Add this line to create rounded corners for table cells */
+}
+
+/* Responsive Table */
+@media (max-width: 767px) {
+    table {
+        font-size: 14px;
+    }
+    th, td {
+        padding: 8px;
+    }
 }

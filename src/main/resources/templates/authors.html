@@ -5,14 +5,15 @@
     <title>Authors</title>
     <link th:href="@{/style.css}" rel="stylesheet"></link>
 </head>
-<body>
-<p th:text="${authors}"></p>
+<h1>Authors</h1>
+<body> <!-- commented out .toString() from authors
+<p th:text="${authors}"></p> -->
 <table>
     <thead>
     <tr>
         <th>ID</th>
         <th>Author</th>
-        <th>Book list</th>
+       <!-- <th>Book list</th>-->
         <th>Book title</th>
     </tr>
     </thead>
@@ -20,7 +21,7 @@
     <tr th:each="author : ${authors}">
         <td th:text="${author.id}"></td>
         <td th:text="${author.fullName}"></td>
-        <td th:text="${author.books}"></td>
+        <!--<td th:text="${author.books}"></td>-->
         <td>
             <table>
                 <tbody>
