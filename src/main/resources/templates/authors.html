@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Authors</title>
     <link th:href="@{/style.css}" rel="stylesheet"></link>
 </head>
 <body>
@@ -10,9 +10,10 @@
 <table>
     <thead>
     <tr>
-        <th>ID<th>
+        <th>ID</th>
         <th>Author</th>
-        <th>Books</th>
+        <th>Book list</th>
+        <th>Book title</th>
     </tr>
     </thead>
     <tbody>
@@ -24,7 +25,7 @@
             <table>
                 <tbody>
                 <tr th:each="book: ${author.books}">
-                    <td th:text ="${book.title}"> Book Title</td>
+                    <td th:text="${book.title}"> Book Title</td>
                 </tr>
                 </tbody>
             </table>
