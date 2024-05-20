@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 // or could use @RestController in which case we need the @ResponseBody below
 @RestControllerAdvice
-
 public class AuthorNotFoundAdvice {
 
    //@ResponseBody // returns response as JSON
@@ -21,6 +20,4 @@ public class AuthorNotFoundAdvice {
        AuthorNotFoundResponse response = new AuthorNotFoundResponse(e.getMessage(), 400, request.getRequestURL().toString());
        return ResponseEntity.badRequest().body(response);
    }
-
-
 }

@@ -1,4 +1,4 @@
-package com.sparta.idg.libraryapp259.controllers;
+package com.sparta.idg.libraryapp259.controllers.rest;
 
 import com.sparta.idg.libraryapp259.model.entities.Author;
 import com.sparta.idg.libraryapp259.model.entities.Book;
@@ -86,9 +86,5 @@ public BookController(BookRepository bookRepository, AuthorRepository authorRepo
         book.setAuthor(author);
         return bookRepository.save(book);
     }
-
-
-
-
 
 }

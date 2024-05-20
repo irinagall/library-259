@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 10px mediumvioletred solid;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    /*RRGGBB 0-9 A-F*/
+    background-color: aquamarine;
+}

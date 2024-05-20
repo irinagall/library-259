@@ -1,13 +1,12 @@
-package com.sparta.idg.libraryapp259.controllers;
+package com.sparta.idg.libraryapp259.controllers.rest;
 
 import com.sparta.idg.libraryapp259.model.entities.Author;
 import com.sparta.idg.libraryapp259.model.repositories.AuthorRepository;
 import com.sparta.idg.libraryapp259.model.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +43,7 @@ public class AuthorController {
         .stream()//Stream<Author>
         .filter(author->author.getFullName().contains(name))
                 .toList();
-
+                //.collect(Collectors.toList());
     }
 
 
@@ -87,18 +86,17 @@ public class AuthorController {
     //create book by author Id method;
 
     //HATEOS
-   /* @GetMapping("author/{id}")
-    public EntityModel<Author> getAuthorById(@PathVariable Integer id){
+    @GetMapping("author/{id}")
+    public EntityModel<Author> getAuthorById(@PathVariable Integer id) {
         return authorRepository.findById(id)
-                .map(author-> EntityModel.of(author,
+                .map(author -> EntityModel.of(author,
+                        linkTo(methodOn(AuthorController.class).getAuthorById(id)).withSelfRel(),
+                        linkTo(methodOn(AuthorController.class).getAllAuthors()).withRel("authors"))).orElseThrow();
 
-                        //Link.of("https://www.example.com", "example"))).orElseThrow();
+                       /* //Link.of("https://www.example.com", "example"))).orElseThrow();
                         WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(AuthorController.class).getAuthorById(id)).withSelfRel(),
-                        WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(AuthorController.class).getAllAuthors()).withRel("all authors"))).orElseThrow();/*,
-                        WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(AuthorController.class).getBookByAuthorId(id)).withRel("books"))).orElseThrow()*/
-    }/*
-
+                        WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(AuthorController.class).getAllAuthors()).withRel("all authors"))).orElseThrow();,
+                        WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(AuthorController.class).getBookByAuthorId(id)).withRel("books"))).orElseThrow()
+        */
+    }
 }
-/*linkTo(methodOn(AuthorController.class).getAuthorById(id)).withSelfRel(),
-linkTo(methodOn(AuthorController.class).getAllAuthors()).withRel("Authors")))
-        .orElseThrow();*/
