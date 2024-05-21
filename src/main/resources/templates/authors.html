@@ -2,38 +2,39 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Authors</title>
-    <link th:href="@{/style.css}" rel="stylesheet"></link>
+    <title>Title</title>
+    <link th:href="@{/style.css}" rel="stylesheet">
 </head>
-<h1>Authors</h1>
-<body> <!-- commented out .toString() from authors
-<p th:text="${authors}"></p> -->
+<body>
+<!--<p th:text="${authors}"></p>-->
 <table>
     <thead>
     <tr>
         <th>ID</th>
         <th>Author</th>
-       <!-- <th>Book list</th>-->
-        <th>Book title</th>
+        <th>Books</th>
+        <th>Delete</th>
+        <th>Edit</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="author : ${authors}">
         <td th:text="${author.id}"></td>
         <td th:text="${author.fullName}"></td>
-        <!--<td th:text="${author.books}"></td>-->
         <td>
             <table>
                 <tbody>
-                <tr th:each="book: ${author.books}">
-                    <td th:text="${book.title}"> Book Title</td>
+                <tr th:each="book : ${author.books}">
+                    <td th:text="${book.title}">Book Title</td>
                 </tr>
                 </tbody>
             </table>
         </td>
+        <td><a th:href="@{/web/delete/{id}(id=${author.id})}">Delete</a></td>
+        <td><a th:href="@{/web/update/{id}(id=${author.id})}">Edit</a></td>
     </tr>
     </tbody>
 </table>
-<div th:insert="fragments/footer :: alternate"></div>
+<div th:insert="~{fragments/footer :: alternate}"></div>
 </body>
 </html>
