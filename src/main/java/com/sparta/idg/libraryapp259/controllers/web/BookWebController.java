@@ -51,18 +51,27 @@ public class BookWebController {
         return "redirect:/web/books";
     }
 
-    @GetMapping("/web/delete/{id}")
+    @GetMapping("/web/books/delete/{id}")
     public String deleteBookById(@PathVariable Integer id, Model model){
         bookRepository.findById(id).ifPresent(bookToDelete->bookRepository.delete(bookToDelete));
         return "redirect:/web/books";
     }
 
-   /* @PostMapping("/web/book/edit/{id}")
-    public String editBook(@ModelAttribute("book") Book book,@PathVariable Integer id){
-        Book bookToUpdate.setAuthor(book.getAuthor());
+    @GetMapping("/web/books/update/{id}")
+    public String editBook(@PathVariable Integer id, Model model){
+        Book book = new Book();
+        model.addAttribute("book", book);
+        model.addAttribute("id",id);
+
+        return "update-book";
+    }
+
+    @PostMapping("/web/update-book/{id}")
+    public String updateBook(@PathVariable Integer id, @ModelAttribute("book") Book book){
+        Book bookToUpdate =bookRepository.findById(id).orElse(null);
         bookToUpdate.setTitle(book.getTitle());
         bookRepository.save(bookToUpdate);
         return "redirect:/web/books";
-    }*/
+    }
 
 }

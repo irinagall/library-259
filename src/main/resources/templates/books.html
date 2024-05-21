@@ -14,6 +14,8 @@
         <th>ID</th>
         <th>Title</th>
         <th>Author(s)</th>
+        <th>Delete</th>
+        <th>Edit</th>
     </tr>
     </thead>
     <tbody>
@@ -23,9 +25,13 @@
         <td>
             <p th:text="${book.author.fullName}"></p>
         </td>
+        <td><a th:href="@{/web/books/delete/{id}(id=${book.id})}">Delete</a></td>
+        <td><a th:href="@{/web/books/update/{id}(id=${book.id})}">Edit</a></td>
     </tr>
     </tbody>
 
 </table>
+<div th:insert="~{fragments/footer :: alternate}"></div>
+
 </body>
 </html>
